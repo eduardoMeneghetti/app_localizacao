@@ -8,6 +8,8 @@ class FormParc extends StatefulWidget {
 }
 
 class _FormParcState extends State<FormParc> {
+  TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -20,6 +22,7 @@ class _FormParcState extends State<FormParc> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
+                  controller: _controller,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'Código do Parceiro',
@@ -28,7 +31,10 @@ class _FormParcState extends State<FormParc> {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    String dadosUser = _controller.text;
+                    print('O usuário digitou $dadosUser');
+                  },
                   child: Text('Pesquisar'),
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
